@@ -12,6 +12,7 @@
         loginController.logout = logout;      
         loginController.init = init;       
         loginController.retrieveUserInfo = retrieveUserInfo;
+        loginController.notImplementedYet = notImplementedYet;
         // create blank user variable for login form
         loginController.user = {
             username: '',
@@ -56,6 +57,10 @@
         	if(!util.isUndefinedOrNull($localStorage.token)) {
                 $location.url('/');
         	}
+        }
+        
+        function notImplementedYet() {
+        	util.showMessage($mdToast, $translate.instant('SECURITY.MESSAGES.NOT_IMPLEMENTED_YET'));        	
         }
     }
         		

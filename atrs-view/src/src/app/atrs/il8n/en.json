@@ -68,6 +68,7 @@
 			}
 		},
 		"MESSAGES" : {
+			"NOT_IMPLEMENTED_YET" : "Sorry, We didn't have time to finish this featue yet. Have a break and come back soon to check.",
 			"INVALID_CREDENTIALS" : "Invalid Credentials. Please verify and try again.",
 			"RETRIEVE_USER_INFO_ERROR" : "Error getting user information. Please verify and try again.",
 			"VALIDATION" : {
