@@ -1,3 +1,9 @@
+server:
+  contextPath: /${backend.app.name}
+  port: ${backend.app.port}
+
+spring-boot-application: ${backend.app.name}
+
 security:
   oauth2:
     client:

@@ -33,9 +33,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	@Autowired
-	private TokenStore tokenStore;
-
 	/**
 	 * Creates a bean to store the tokens in memory Just for development
 	 * environment. In production would be great to store the tokens in a
@@ -53,7 +50,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	 */
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.tokenStore(tokenStore).authenticationManager(this.authenticationManager)
+		endpoints.tokenStore(tokenStore()).authenticationManager(this.authenticationManager)
 				.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
 	}
 
