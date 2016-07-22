@@ -3,7 +3,7 @@ package com.crossover.atrs.to;
 import com.crossover.atrs.util.CustomPageRequest;
 
 @SuppressWarnings("serial")
-public class ProjectSearchTo extends CustomPageRequest{
+public class FlightSearchTo extends CustomPageRequest{
 	
 	private boolean onlyActives;
 	private String searchTerm;

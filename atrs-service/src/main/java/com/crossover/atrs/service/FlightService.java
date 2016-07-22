@@ -10,28 +10,28 @@ import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
-import com.crossover.atrs.model.Project;
-import com.crossover.atrs.respository.ProjectRepository;
-import com.crossover.atrs.to.ProjectSearchTo;
+import com.crossover.atrs.model.Flight;
+import com.crossover.atrs.respository.FlightRepository;
+import com.crossover.atrs.to.FlightSearchTo;
 
 @Service
-public class ProjectService {
+public class FlightService {
 
 	@Autowired
-	private ProjectRepository repository;
+	private FlightRepository repository;
 	
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	public Project load(String id) {
+	public Flight load(String id) {
 		return this.getRepository().findOne(id);
 	}
 	
-	public Project save(Project project) {
+	public Flight save(Flight project) {
 		return this.getRepository().save(project);
 	}
 	
-	public Page<Project> search(ProjectSearchTo searchTo) {
+	public Page<Flight> search(FlightSearchTo searchTo) {
 		if(searchTo == null) {
 			return null;
 		}		
@@ -45,11 +45,11 @@ public class ProjectService {
 		return this.getRepository().search(searchTo.getSearchTerm(), searchTo.isOnlyActives(), searchTo);
 	}
 
-	public Iterable<Project> listAll() {
+	public Iterable<Flight> listAll() {
 		return this.getRepository().findAll();
 	}
 
-	public Project archive(Project project) {
+	public Flight archive(Flight project) {
 		if(project == null || project.getArchivationDate() != null) {
 			return project;
 		}
@@ -57,7 +57,7 @@ public class ProjectService {
 		return this.save(project);
 	}
 
-	public Project activate(Project project) {
+	public Flight activate(Flight project) {
 		if(project == null || project.getArchivationDate() == null) {
 			return project;
 		}
@@ -65,7 +65,7 @@ public class ProjectService {
 		return this.save(project);
 	}
 	
-	protected ProjectRepository getRepository() {
+	protected FlightRepository getRepository() {
 		return repository;
 	}
 

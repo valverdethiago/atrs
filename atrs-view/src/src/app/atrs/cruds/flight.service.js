@@ -3,12 +3,12 @@
 
     angular
         .module('atrs-module')
-        .factory('projectService', ProjectService);
+        .factory('flightService', FlightService);
         
 
     /* @ngInject */
-    function ProjectService($http, API_CONFIG) {
-    	var urlBase = API_CONFIG.restAppName+'/project' ;
+    function FlightService($http, API_CONFIG) {
+    	var urlBase = API_CONFIG.restAppName+'/flight' ;
         var service = {
             activate: activate,
         	archive: archive,
@@ -20,16 +20,16 @@
         };
         return service;
         
-        function save(project) {
-        	return $http.post(urlBase+'/save', project);
+        function save(flight) {
+        	return $http.post(urlBase+'/save', flight);
         };
         
-        function archive(project) {
-        	return $http.post(urlBase+'/archive', project);
+        function archive(flight) {
+        	return $http.post(urlBase+'/archive', flight);
         };
         
-        function activate(project) {
-        	return $http.post(urlBase+'/activate', project);
+        function activate(flight) {
+        	return $http.post(urlBase+'/activate', flight);
         };
 
         function load (id) {

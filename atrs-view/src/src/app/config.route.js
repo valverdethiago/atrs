@@ -37,8 +37,8 @@
 
 
         // set default routes when no path specified
-        $urlRouterProvider.when('', '/projects');
-        $urlRouterProvider.when('/', '/projects');
+        $urlRouterProvider.when('', '/flights');
+        $urlRouterProvider.when('/', '/flights');
 
         // always goto 404 if route not found
         $urlRouterProvider.otherwise('/404');

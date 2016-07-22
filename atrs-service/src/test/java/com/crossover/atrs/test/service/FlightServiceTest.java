@@ -9,22 +9,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.crossover.atrs.model.Project;
+import com.crossover.atrs.model.Flight;
 import com.crossover.atrs.respository.DatabaseConfiguration;
-import com.crossover.atrs.service.ProjectService;
+import com.crossover.atrs.service.FlightService;
 import com.crossover.atrs.service.ServiceConfiguration;
-import com.crossover.atrs.to.ProjectSearchTo;
+import com.crossover.atrs.to.FlightSearchTo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={ServiceConfiguration.class, DatabaseConfiguration.class})
-public class ProjectServiceTest {
+public class FlightServiceTest {
 	
 	@Autowired
-	private ProjectService projectService;
+	private FlightService projectService;
 	
     @Before
 	public void setup() {
-		Project p1 = new Project();
+		Flight p1 = new Flight();
 		p1.setSummary("Test Project 1");
 		p1.setDescription("Description Project 1");
 		p1.setTitle("Title Project 1");
@@ -33,13 +33,13 @@ public class ProjectServiceTest {
 	
 	@Test
 	public void testInitialSearch() {
-		ProjectSearchTo searchTo = new ProjectSearchTo();
+		FlightSearchTo searchTo = new FlightSearchTo();
 		searchTo.setOffset(10);
 		searchTo.setOnlyActives(true);
 		searchTo.setPageNumber(1);
 		searchTo.setSearchTerm(null);
 		searchTo.setSort(null);
-		Page<Project> page = this.projectService.search(searchTo);
+		Page<Flight> page = this.projectService.search(searchTo);
 		Assert.assertEquals(1, page.getTotalElements());
 		Assert.assertEquals(1, page.getTotalPages());
 	}

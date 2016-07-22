@@ -12,49 +12,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crossover.atrs.model.Project;
-import com.crossover.atrs.service.ProjectService;
-import com.crossover.atrs.to.ProjectSearchTo;
+import com.crossover.atrs.model.Flight;
+import com.crossover.atrs.service.FlightService;
+import com.crossover.atrs.to.FlightSearchTo;
 
 @RestController
-@RequestMapping("/project")
-public class ProjectController {
+@RequestMapping("/flight")
+public class FlightController {
 
 	@Autowired
-	private ProjectService service;
+	private FlightService service;
 
 	@RequestMapping(value = "/load/{id}", method = GET)
-	public Project loadProject(@PathVariable("id") String id) {
+	public Flight loadProject(@PathVariable("id") String id) {
 		return service.load(id);
 	}
 
 	@RequestMapping(value = "/save", method = POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Project save(@RequestBody Project project) {
-		return service.save(project);
+	public Flight save(@RequestBody Flight flight) {
+		return service.save(flight);
 	}
 
 	@RequestMapping(value = "/archive", method = POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Project archive(@RequestBody Project project) {
-		return service.archive(project);
+	public Flight archive(@RequestBody Flight flight) {
+		return service.archive(flight);
 	}
 
 	@RequestMapping(value = "/activate", method = POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Project activate(@RequestBody Project project) {
-		return service.activate(project);
+	public Flight activate(@RequestBody Flight flight) {
+		return service.activate(flight);
 	}
 
 	@RequestMapping(value = "/find", method = POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Page<Project> find(OAuth2Authentication auth, @RequestBody ProjectSearchTo pageable) {
-		Page<Project> page = service.search(pageable);
+	public Page<Flight> find(OAuth2Authentication auth, @RequestBody FlightSearchTo pageable) {
+		Page<Flight> page = service.search(pageable);
 		return page;
 	}
 
 	@RequestMapping(value = "/list", method = GET)
-	public Iterable<Project> list(OAuth2Authentication auth) {
+	public Iterable<Flight> list(OAuth2Authentication auth) {
 		return service.listAll();
 	}
 

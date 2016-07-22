@@ -5,9 +5,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.crossover.atrs.model.Project;
+import com.crossover.atrs.model.Flight;
 
-public interface ProjectRepository extends PagingAndSortingRepository<Project, String> {
+public interface FlightRepository extends PagingAndSortingRepository<Flight, String> {
 	
 	@Query("{ $and : [ "
 			+ "        { $or : [  { $where: '?1 == false' },  { archivationDate: { $exists: false } } ] }, "
@@ -17,6 +17,6 @@ public interface ProjectRepository extends PagingAndSortingRepository<Project, S
 			+ "                 { $or : [ { $where: '?0 == null' } , { description : { $regex : ?0 } } ] }"
 			+ "               ] } "
 			+ "       ] }" )
-	Page<Project> search(String name, boolean onlyAtives, Pageable pageable);
+	Page<Flight> search(String name, boolean onlyAtives, Pageable pageable);
 
 }

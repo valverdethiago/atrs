@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="projects")
-public class Project extends BasicEntity{
+public class Flight extends BasicEntity{
 
     private String title;
     private String summary;
@@ -13,11 +13,11 @@ public class Project extends BasicEntity{
     private Date archivationDate;
         
     
-	public Project() {
+	public Flight() {
 		super();
 	}
 	
-	public Project(String title, String summary, String description) {
+	public Flight(String title, String summary, String description) {
 		super();
 		this.title = title;
 		this.summary = summary;

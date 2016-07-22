@@ -27,17 +27,17 @@
         $translatePartialLoaderProvider.addPart('app/atrs');
         $httpProvider.interceptors.push(authInterceptor);
         $stateProvider
-        .state('projects', {
+        .state('flights', {
             parent : 'triangular.admin-default',
             data: {
                 layout: {
                     sideMenuSize: 'icon'
                 }
             },
-            url: '/projects',
-            templateUrl: 'app/atrs/cruds/projects.html',
-            controller: 'ProjectController',
-            controllerAs: 'projectController'
+            url: '/flights',
+            templateUrl: 'app/atrs/cruds/flight.html',
+            controller: 'FlightController',
+            controllerAs: 'flightController'
         })
         .state('login', {
         	url : '/login',

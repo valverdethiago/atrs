@@ -1,10 +1,10 @@
 {	
 	"CRUDS": {
-		"PROJECTS" : {
+		"FLIGHTS" : {
 			"DIALOG" : {
 				"TITLE" : {
-					"INSERT" : "New Project",
-					"UPDATE" : "Edit Project",
+					"INSERT" : "New Flight",
+					"UPDATE" : "Edit Flight",
 					"CONFIRMATION" : "Confirmation"
 				}
 			},
@@ -14,7 +14,7 @@
 					"SUMMARY" : "Sumary",
 					"DESCRIPTION" : "Description",
 					"SEARCH" : "Search...",
-					"ONLY_ACTIVES" : "Show only active projects"
+					"ONLY_ACTIVES" : "Show only active flights"
 				},
 				"BUTTONS" : {
 					"ARCHIVE" : "Archive",
@@ -28,23 +28,23 @@
 				}					
 			},
 			"MESSAGES" : {
-				"NO_PROJECTS" : "Feels empty? Click the button bellow to create a new project",
-				"NEW_PROJECT" : "Create New Project",
+				"NO_FLIGHTS" : "Feels empty? Click the button bellow to create a new flight",
+				"NEW_FLIGHT" : "Create New Flight",
 				"NOT_IMPLEMENTED" : "Not Implemented Yet", 
 				"ERROR" : "An error has occurred. Try again later.", 
 				"SUCCESS" : {
-					"SAVE" : "Project saved successfully.",
-					"ARCHIVE" : "Project archived successfully.",
-					"ACTIVATE" : "Project activated successfully."
+					"SAVE" : "Flight saved successfully.",
+					"ARCHIVE" : "Flight archived successfully.",
+					"ACTIVATE" : "Flight activated successfully."
 				},
 				"CONFIRMATION" : {
-					"ARCHIVE" : "Would you like to archive the project?", 
+					"ARCHIVE" : "Would you like to archive the flight?", 
 					"ARCHIVE_EXP" : "It can be reactivated later."
 				},
 				"VALIDATION" : {
-					"TITLE" : "Please inform a valid title for the project",
-					"SUMMARY" : "Please inform a valid summary for the project",
-					"DESCRIPTION" : "Please inform a valid description for the project",
+					"TITLE" : "Please inform a valid title for the flight",
+					"SUMMARY" : "Please inform a valid summary for the flight",
+					"DESCRIPTION" : "Please inform a valid description for the flight",
 					"SEARCH_TERM_LENGTH" : "Please informa a term with 3 characters at least."
 				} 
 			}			
