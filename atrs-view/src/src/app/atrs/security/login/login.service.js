@@ -7,7 +7,7 @@
         
 
     /* @ngInject */
-    function loginService($http, API_CONFIG) {
+    function loginService($window, $http, API_CONFIG) {
         var service = {
             login : login,
             logout : logout,
@@ -15,7 +15,8 @@
         };
         return service;
         
-        function login(user, credentials) {  
+        function login(user) { 
+            var credentials = $window.btoa(user.username+':'+user.password);  
         	var loginUrl = API_CONFIG.restAppName+'/oauth/token';
         	var params = 'grant_type=password&username='+user.username+'&password='+user.password;
         	return $http.post(loginUrl, params, { 

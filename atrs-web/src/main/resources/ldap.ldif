@@ -23,6 +23,16 @@ sn: Administrator
 uid: admin
 userPassword: admin
 
+dn: uid=ldap,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: LDAP
+sn: LDAP User
+uid: ldap
+userPassword: secret
+
 
 dn: cn=members,ou=groups,dc=springframework,dc=org
 objectclass: top
@@ -30,3 +40,4 @@ objectclass: groupOfNames
 cn: members
 ou: member
 uniqueMember: uid=admin,ou=people,dc=springframework,dc=org
+uniqueMember: uid=ldap,ou=people,dc=springframework,dc=org

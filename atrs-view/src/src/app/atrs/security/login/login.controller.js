@@ -6,8 +6,9 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($scope, $location, $cookies, $translate, $window, $http, $mdToast, $auth, $localStorage, loginService, util) {
+    function LoginController($scope, $location, $cookies, $translate, $http, $mdToast, $auth, $localStorage, loginService, util) {
         var loginController = this;
+        loginController.principal = {};
         loginController.login = login;        
         loginController.logout = logout;      
         loginController.init = init;       
@@ -17,12 +18,9 @@
             username: '',
             password: ''
         };
-        loginController.clientId = "ldap";
-        loginController.secret = "secret"
-        loginController.credentials = $window.btoa(loginController.clientId+':'+loginController.secret); 
 
         function login() {
-        	loginService.login(loginController.user, loginController.credentials)
+        	loginService.login(loginController.user)
         	.success(function(result) {
                 $localStorage.token = result.access_token;
                 loginController.retrieveUserInfo();
@@ -40,7 +38,8 @@
         	loginService.retrieveUserLoggedIn()
         	.success(function(result) {
         		console.log(result);
-                $scope.user = result;                
+        		loginController.principal = result;
+        		
         	})
         	.error(function(error) {
             	util.showMessage($mdToast, $translate.instant('SECURITY.MESSAGES.RETRIEVE_USER_INFO_ERROR'));

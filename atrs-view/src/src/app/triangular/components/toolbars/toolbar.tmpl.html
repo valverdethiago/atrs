@@ -1,9 +1,10 @@
-<div class="md-toolbar-tools" ng-controller="LoginController as loginController" >
+<div class="md-toolbar-tools" ng-cloak ng-controller="LoginController as loginController" >
 
    <md-menu>
 	   <md-button ng-click="loginController.logout()" aria-label="side navigation">
 	   		<md-icon md-font-icon="zmdi zmdi-sign-in"></md-icon>
-	    	<span translate="ADMIN.TOOLBAR.LOGOUT"></span>
+			<md-tooltip>{{'ADMIN.TOOLBAR.LOGOUT' | translate }}</md-tooltip>
+	    	<span>{{'ADMIN.TOOLBAR.LOGOUT' | translate }}</span>
 	   </md-button>
 
     </md-menu>
