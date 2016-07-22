@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($scope, $location, $cookies, $translate, $http, $mdToast, $auth, $localStorage, loginService, util) {
+    function LoginController($scope, $location, $cookies, $translate, $http, $window, $mdToast, $auth, $localStorage, loginService, util) {
         var loginController = this;
         loginController.principal = {};
         loginController.login = login;        
@@ -18,9 +18,12 @@
             username: '',
             password: ''
         };
+        loginController.clientId = "ldap";
+        loginController.secret = "secret"
+        loginController.credentials = $window.btoa(loginController.clientId+':'+loginController.secret); 
 
         function login() {
-        	loginService.login(loginController.user)
+        	loginService.login(loginController.user, loginController.credentials)
         	.success(function(result) {
                 $localStorage.token = result.access_token;
                 loginController.retrieveUserInfo();

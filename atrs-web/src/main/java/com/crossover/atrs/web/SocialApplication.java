@@ -51,6 +51,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -79,13 +80,14 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
 		// @formatter:off	
 		http.antMatcher("/**")
 			.authorizeRequests()
-				.antMatchers("/", "/login**", "/oauth**").permitAll()
+				.antMatchers("/", "/login**", "/oauth/**").permitAll()
 				.anyRequest().authenticated()
 			.and().exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/"))
 			.and().logout().logoutSuccessUrl("/").permitAll()
 			.and().csrf().csrfTokenRepository(csrfTokenRepository())
 			.and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
 			.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+		http.csrf().disable();
 		// @formatter:on
 	}
 
@@ -100,6 +102,13 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
 				.antMatcher("/me")
 				.authorizeRequests().anyRequest().authenticated();
 			// @formatter:on
+		}
+		
+		@Override
+		public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+			// TODO Auto-generated method stub
+			super.configure(resources);
+			resources.resourceId("admin");
 		}
 	}
 
@@ -133,7 +142,8 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
 	@Bean
 	@ConfigurationProperties("github")
 	ClientResources github() {
-		return new ClientResources();
+		ClientResources cr =  new ClientResources();
+		return cr;
 	}
 
 	@Bean
@@ -142,11 +152,18 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
 		return new ClientResources();
 	}
 
+	@Bean
+	@ConfigurationProperties("ldap")
+	ClientResources ldap() {
+		return new ClientResources();
+	}
+
 	private Filter ssoFilter() {
 		CompositeFilter filter = new CompositeFilter();
 		List<Filter> filters = new ArrayList<>();
 		filters.add(ssoFilter(facebook(), "/login/facebook"));
 		filters.add(ssoFilter(github(), "/login/github"));
+		filters.add(ssoFilter(ldap(), "/login/ldap"));
 		filter.setFilters(filters);
 		return filter;
 	}
@@ -206,4 +223,6 @@ class ClientResources {
 		return resource;
 	}
 }
+
+
 

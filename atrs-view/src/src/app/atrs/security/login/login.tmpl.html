@@ -37,16 +37,10 @@
                         <div class="text-center margin-20" translate>SECURITY.LOGIN.LABELS.TEXT.SOCIAL_LOGIN</div>
 
                         <div layout="row" layout-align="space-between center"  layout-margin>
-                            <md-button ng-click="loginController.authenticate('facebook')" class="md-icon-button" ng-style="{ 'background-color':  '#337ab7' }" >
+                            <md-button href="/rest/login/facebook?redirect_uri=http://localhost:3000" class="md-icon-button" ng-style="{ 'background-color':  '#337ab7' }" >
                             	<md-icon md-font-icon="fa fa-facebook"></md-icon>
                             </md-button>
-							<md-button ng-click="loginController.authenticate('google')" class="md-icon-button" ng-style="{ 'background-color': '#e05d6f' }"  >
-                            	<md-icon md-font-icon="fa fa-google-plus"></md-icon>
-                            </md-button>
-							<md-button ng-click="loginController.authenticate('linkedin')" class="md-icon-button" ng-style="{ 'background-color': '#337ab7' }" >
-                            	<md-icon md-font-icon="fa fa-linkedin"></md-icon>
-                            </md-button>
-							<md-button href="/rest/login/github" class="md-icon-button"  ng-style="{ 'background-color': '#5bc0de' }" >
+							<md-button href="/rest/login/github?redirect_uri=http://localhost:3000" class="md-icon-button"  ng-style="{ 'background-color': '#5bc0de' }" >
                             	<md-icon md-font-icon="fa fa-github"></md-icon>
                             </md-button>
                         </div>
