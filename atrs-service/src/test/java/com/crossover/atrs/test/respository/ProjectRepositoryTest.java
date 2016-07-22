@@ -1,38 +1,42 @@
 package com.crossover.atrs.test.respository;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.crossover.atrs.model.Project;
+import com.crossover.atrs.respository.DatabaseConfiguration;
 import com.crossover.atrs.respository.ProjectRepository;
-import com.crossover.atrs.test.service.TestConfiguration;
-import com.crossover.atrs.to.ProjectSearchTo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={TestConfiguration.class})
+@ContextConfiguration(classes={DatabaseConfiguration.class})
 public class ProjectRepositoryTest {
 	
 	@Autowired
 	private ProjectRepository projectRepository;
+
+    @Before
+	public void setup() {
+		Project p1 = new Project();
+		p1.setSummary("Test Project 1");
+		p1.setDescription("Description Project 1");
+		p1.setTitle("Title Project 1");
+		this.projectRepository.save(p1);
+		Project p2 = new Project();
+		p1.setSummary("Test Project 2");
+		p1.setDescription("Description Project 2");
+		p1.setTitle("Title Project 2");
+		this.projectRepository.save(p2);
+	}
 	
 	@Test
-	public void test() {
-		ProjectSearchTo to = new ProjectSearchTo();
-		to.setOnlyActives(false);
-		to.setOffset(0);
-		to.setPageSize(2);
-		to.setPageNumber(1);
-		to.setSearchTerm("Desc");
-		Page<Project> page = this.projectRepository.search(to.getSearchTerm(), to.isOnlyActives(), to);
-		System.out.println(page.getTotalElements()+" encontrados");
-		System.out.println(page.getTotalPages()+" páginas");
-		for(Project project : page.getContent()) {
-			System.out.println(project.getTitle());
-		}
+	public void testList() {
+		Iterable<Project> projects = this.projectRepository.findAll();
+		Assert.assertTrue(projects.iterator().hasNext());
 	}
-
+	
 }

@@ -11,7 +11,18 @@ public class Project extends BasicEntity{
     private String summary;
     private String description;
     private Date archivationDate;
+        
     
+	public Project() {
+		super();
+	}
+	
+	public Project(String title, String summary, String description) {
+		super();
+		this.title = title;
+		this.summary = summary;
+		this.description = description;
+	}
 	public Date getArchivationDate() {
 		return archivationDate;
 	}
