@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($location, $cookies, $translate, $window, $http, $mdToast, $auth, $localStorage, loginService, util) {
+    function LoginController($location, $cookies, $translate, $window, $http, $mdToast, $localStorage, loginService, util) {
         var loginController = this;
         loginController.login = login;        
         loginController.logout = logout;      
@@ -35,7 +35,7 @@
         	});   
  
         }
-        
+                
         function retrieveUserInfo() {
         	loginService.retrieveUserLoggedIn()
         	.success(function(result) {

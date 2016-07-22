@@ -23,10 +23,9 @@
     
 
     /* @ngInject */
-    function rootModuleConfig($translatePartialLoaderProvider, $stateProvider, $httpProvider, $authProvider, paginationTemplateProvider) {
+    function rootModuleConfig($translatePartialLoaderProvider, $stateProvider, $httpProvider, paginationTemplateProvider) {
         $translatePartialLoaderProvider.addPart('app/atrs');
         $httpProvider.interceptors.push(authInterceptor);
-        configAuthProvider($authProvider);
         $stateProvider
         .state('projects', {
             parent : 'triangular.admin-default',
@@ -71,21 +70,6 @@
 		    }
 	    };
     };	
-    
-    function configAuthProvider(authProvider) {
-        authProvider.facebook({
-          clientId: '1378618808820407',
-          redirectUri: '/rest/oauth/authorization',
-          responseType: 'token'
-        });
-
-        authProvider.google({
-          clientId: '54617438088-q9tbikabl9pefp5otgo63h37f1fsg3s9.apps.googleusercontent.com',
-          redirectUri: '/rest/oauth/authorization',
-          responseType: 'token'
-        });
-    	
-    };
 			
     function adjustSearchResultForGrid(searchResult, pageRequest) {	
 		searchResult.limit = (searchResult.number + 1) * searchResult.numberOfElements;        		

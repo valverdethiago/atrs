@@ -5,7 +5,7 @@
         .module('app', [
             'triangular','ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
             'ui.router', 'pascalprecht.translate', 'LocalStorageModule', 'textAngular',  
-            'md.data.table', 'angularUtils.directives.dirPagination','satellizer','ngStorage', 'atrs-module'
+            'md.data.table', 'angularUtils.directives.dirPagination','ngStorage', 'atrs-module'
         ])
         // create a constant for languages so they can be added to both triangular & translate
         .constant('APP_LANGUAGES', [{

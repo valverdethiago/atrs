@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('atrs-module', ['ngMaterial', 'satellizer']);
+        .module('atrs-module', ['ngMaterial']);
 })();
