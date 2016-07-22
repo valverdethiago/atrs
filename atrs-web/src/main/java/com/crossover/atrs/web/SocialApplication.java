@@ -79,7 +79,7 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
 		// @formatter:off	
 		http.antMatcher("/**")
 			.authorizeRequests()
-				.antMatchers("/", "/login**").permitAll()
+				.antMatchers("/", "/login**", "/oauth**").permitAll()
 				.anyRequest().authenticated()
 			.and().exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/"))
 			.and().logout().logoutSuccessUrl("/").permitAll()
