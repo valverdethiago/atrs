@@ -1,2 +1,6 @@
-/atrs-web/
-/atrs-view/
+target
+node_modules
+bower_components
+.classpath
+.settings
+.project
