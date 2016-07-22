@@ -29,19 +29,20 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	public void configure(ResourceServerSecurityConfigurer resources) {
 		resources.resourceId(resourceId);
 	}
+
 	/**
 	 * Configures the matcher to apply security constraints
 	 */
 	@Override
-	public void configure(HttpSecurity http) throws Exception {
-		http.requestMatcher(new OAuthRequestedMatcher()).authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
-				.anyRequest().authenticated();
+	public void configure(HttpSecurity httpSecurity) throws Exception {
+		httpSecurity.requestMatcher(new OAuthRequestedMatcher()).authorizeRequests().antMatchers(HttpMethod.OPTIONS)
+				.permitAll().anyRequest().authenticated();
 	}
 
 	/**
-	 * Implements a request matcher for the OAuth engine
-	 * Defines the token and parameter names
-	 *  
+	 * Implements a request matcher for the OAuth engine Defines the token and
+	 * parameter names
+	 * 
 	 * @author valverde.thiago
 	 *
 	 */

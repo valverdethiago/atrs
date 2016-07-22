@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($location, $cookies, $translate, $window, $http, $mdToast, $auth, $localStorage, loginService, util) {
+    function LoginController($scope, $location, $cookies, $translate, $window, $http, $mdToast, $auth, $localStorage, loginService, util) {
         var loginController = this;
         loginController.login = login;        
         loginController.logout = logout;      
@@ -40,7 +40,7 @@
         	loginService.retrieveUserLoggedIn()
         	.success(function(result) {
         		console.log(result);
-                $localStorage.user = result;                
+                $scope.user = result;                
         	})
         	.error(function(error) {
             	util.showMessage($mdToast, $translate.instant('SECURITY.MESSAGES.RETRIEVE_USER_INFO_ERROR'));
@@ -48,8 +48,8 @@
         }
 
         function logout() {
-	        $localStorage.$reset();
-	        $location.url('/login');
+    	    $localStorage.$reset();
+    	    $location.url('/login'); 
         };
         
         function init() {

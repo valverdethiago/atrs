@@ -10,6 +10,7 @@
     function loginService($http, API_CONFIG) {
         var service = {
             login : login,
+            logout : logout,
             retrieveUserLoggedIn : retrieveUserLoggedIn
         };
         return service;
@@ -21,9 +22,12 @@
                 headers : { 
                     'Authorization': 'Basic ' + credentials,
                     'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'  
-                }
-                
+                }                
             })
+        };	
+        
+        function logout() {  
+        	return $http.post('/rest/logout');
         };	
         
         function retrieveUserLoggedIn() {  
