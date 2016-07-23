@@ -24,4 +24,8 @@ The software is packaged in a zip file containing the atrs parent folder. Unzip 
 
 1. atrs - run *mvn clean install* in the main folder to build the parent project
 2. atrs-web:
-    - run _*mvn clean install*_ in this folder to build the application backend
+    - run **mvn clean install** to build the application backend
+    - run **mvn spring-boot:run** to start the RESTFUL service
+3. atrs-view:
+    - run **mvn clean install** to build the project, install node, npm and bower, and download all the dependencies of the view layer. This command also will start a gulp http service to start the view layer of the application. After this process you can browse the following address in a local internet browser; **http://localhost:3000**. The initial page (login) will be shown.
+    
