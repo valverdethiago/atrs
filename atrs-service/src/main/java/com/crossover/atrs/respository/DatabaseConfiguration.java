@@ -1,23 +1,25 @@
 package com.crossover.atrs.respository;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.github.fakemongo.Fongo;
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 
 @Configuration
 @EnableMongoRepositories(basePackages="com.crossover.atrs")
-@PropertySource(value="classpath:atrs.properties")
-public class DatabaseConfiguration {
+public class DatabaseConfiguration extends AbstractMongoConfiguration {
 
-
-	@Bean(name="mongoTemplate")
-	public MongoTemplate mongoTemplate() {
-		return new MongoTemplate(new Fongo("agilelink").getMongo(), "agilelink");
+	@Override
+	protected String getDatabaseName() {
+		return "atrs";
 	}
+
+	@Override
+	public Mongo mongo() throws Exception {
+		return new MongoClient("localhost");
+	}	
 
 
 }

@@ -28,7 +28,7 @@
         };	
         
         function retrieveUserLoggedIn() {  
-        	return $http.get(API_CONFIG.restAppName+'/user/retrieve');
+        	return $http.get(API_CONFIG.restAppName+'/user/me'); 
         };	
         
         function logout() {

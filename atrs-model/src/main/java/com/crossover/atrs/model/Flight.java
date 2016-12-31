@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="projects")
+@Document(collection="flights")
 public class Flight extends BasicEntity{
 
     private String title;

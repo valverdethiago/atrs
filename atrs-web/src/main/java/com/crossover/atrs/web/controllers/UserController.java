@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-	@RequestMapping(value = "/retrieve", method = GET)
+	@RequestMapping(value = "/me", method = GET)
 	public OAuth2Authentication list(OAuth2Authentication auth) {
 		return auth;
 	}
